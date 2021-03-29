@@ -13,10 +13,7 @@ color: white;
     
     }
 
-    #solar-load li:hover{
-    background-color: red;
-      
-      } 
+   
 
       #solar-load li{
         list-style: none;
