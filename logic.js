@@ -18,8 +18,17 @@ imag_2.style.padding = '10px';
 loadIcons.appendChild(imag_2);
 
 
+//Gloabal variables
+let loadFan;
+let fanWatt;
 
-//load prompts
+let loadPressingIron;
+let PressingIronWatt;
+
+let total_loadfan_fanWatt = parseInt(loadFan) * parseInt(fanWatt);
+let total_loadPressingIron_PressingIronWatt = parseInt(loadPressingIron) * parseInt(PressingIronWatt);
+
+//load prompts for fan
 imag_1.onclick=function(){
     let itemSelectedDiv = document.getElementById('itemSelectedDiv');
     let itemSelected = document.createElement('img');
@@ -30,17 +39,91 @@ imag_1.onclick=function(){
     itemSelectedDiv.appendChild(itemSelected);
 
     
-    let loadBuld = prompt("Enter number of buld");
-    let bulbWatt = prompt("Enter waltage");
-    let toal_loadBulb_bulbWatt = loadBuld * bulbWatt;
+    loadFan = prompt("Enter number of fan");
+    fanWatt = prompt("Enter waltage");
+    total_loadfan_fanWatt = loadFan * fanWatt;
     //total load div
    
     let totalLoadDiv = document.createElement('div');
-    totalLoadDiv.textContent = toal_loadBulb_bulbWatt + "W";
+    totalLoadDiv.textContent = total_loadfan_fanWatt + "W";
     itemSelectedDiv.appendChild(totalLoadDiv);
 
     
-    if(toal_loadBulb_bulbWatt <= 80){
+}
+
+//load prompts for pressing Iron
+imag_2.onclick=function(){
+    let itemSelectedDiv = document.getElementById('itemSelectedDiv');
+    let itemSelected = document.createElement('img');
+    itemSelected.setAttribute('src', './images/imag2.png');
+    itemSelected.setAttribute('alt', 'Pressing Iron');
+    itemSelected.style.width = '40px';
+    itemSelected.style.height = '40px';
+    itemSelectedDiv.appendChild(itemSelected);
+
+    
+    loadPressingIron = prompt("Enter number of Pressing Iron");
+    PressingIronWatt = prompt("Enter waltage");
+    total_loadPressingIron_PressingIronWatt = loadPressingIron * PressingIronWatt;
+    //total load div
+   
+    let totalLoadDiv = document.createElement('div');
+    totalLoadDiv.textContent = total_loadPressingIron_PressingIronWatt  + "W";
+    itemSelectedDiv.appendChild(totalLoadDiv);
+
+}
+ 
+
+    
+ 
+
+
+
+
+
+
+
+/*
+imag_2.onclick=function(){
+    let itemSelectedDiv = document.getElementById('itemSelectedDiv');
+    let itemSelected = document.createElement('img');
+    itemSelected.setAttribute('src', './images/imag2.png');
+    itemSelected.setAttribute('alt', 'bulb');
+    itemSelected.style.width = '40px';
+    itemSelected.style.height = '40px';
+    itemSelectedDiv.appendChild(itemSelected);
+
+    let table = document.createElement('table');
+    let row = table.insertRow(0);
+    let td = row.insertCell(0)
+
+    let row1 = table.insertRow(-1);
+    let td1 = row1.insertCell(-1)
+
+
+    td.innerHTML = "hello";
+    td1.innerHTML = "bello"
+    itemSelectedDiv.appendChild(td);
+    itemSelectedDiv.appendChild(td1);
+    console.log(td);
+    console.log(td1);
+}
+
+*/
+let submitButton = document.getElementById('submitButton');
+submitButton.onclick=function(){
+let totaLoads = total_loadfan_fanWatt  + total_loadPressingIron_PressingIronWatt;
+
+
+console.log(totaLoads);
+
+
+let displayTotalLoad = document.getElementById('displayTotalLoad');
+let displayTotalLoadFigure = document.createElement('p');
+displayTotalLoadFigure.textContent = totaLoads + "W";
+displayTotalLoad.appendChild(displayTotalLoadFigure);
+
+    if(totaLoads <= 10000){
     
         let solarPanelDiv = document.getElementById('solarPanelDiv');
         let chargeControlerDiv = document.getElementById('chargeControlerDiv');
@@ -99,40 +182,8 @@ imag_1.onclick=function(){
         batteryDiv.appendChild(batteryFigure );
     }else{
 
-        prompt("Sorry no equipment recommended at this time")
+        alert("Sorry no equipment recommended at this time")
 
     }
- 
-}
-
-
-
-
-
-
-
-imag_2.onclick=function(){
-    let itemSelectedDiv = document.getElementById('itemSelectedDiv');
-    let itemSelected = document.createElement('img');
-    itemSelected.setAttribute('src', './images/imag2.png');
-    itemSelected.setAttribute('alt', 'bulb');
-    itemSelected.style.width = '40px';
-    itemSelected.style.height = '40px';
-    itemSelectedDiv.appendChild(itemSelected);
-/*
-    //table element to be revisited
-    let table = document.createElement('Table');
-    let tblBody = document.createElement('tbody');
-    let row = document.createElement('tr');
-    let cell = document.createElement('td');
-    let cellContent = document.createTextNode(itemSelected)
-
-    table.appendChild(tblBody);
-    tblBody.appendChild(row);
-    row.appendChild(cell);
-    cell.appendChild(cellContent);
-*/
 
 }
-
-
